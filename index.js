@@ -98,6 +98,7 @@ onClick('buttonUpdateContact', () => {
         fields[index].value = '';
     }
 
+    showNewContactForm();
     showResults(); 
 });
 
