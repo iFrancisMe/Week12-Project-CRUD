@@ -1,0 +1,23 @@
+{
+  "name": "fe-week10-assignment",
+  "version": "1.0.0",
+  "description": "Week 10 Coding Assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iFrancisMe/FE-Week10-JS-DOM-Coding-Project.git"
+  },
+  "author": "Francis Mendoza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iFrancisMe/FE-Week10-JS-DOM-Coding-Project/issues"
+  },
+  "homepage": "https://github.com/iFrancisMe/FE-Week10-JS-DOM-Coding-Project#readme",
+  "dependencies": {
+    "bootstrap": "^4.6.2",
+    "jquery": "^3.7.1"
+  }
+}
