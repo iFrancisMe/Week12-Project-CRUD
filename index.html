@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FE-Week10-JS&DOM</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+    <style>
+        .formfields {
+            margin-top: 10;
+            margin-bottom: 10;
+        }
+        .results-header, .results-header-active {
+            background-color: #272626;
+            .hint {
+                visibility: hidden;
+            }
+        }
+        .results-header-active:hover, .results:hover {
+            background-color: rgb(39, 110, 240);
+            cursor: pointer;
+            color: white;
+            .hint {
+                visibility: visible;
+                color: red;
+            }
+        }
+        .contact-card {
+            color: black;
+            background-color: beige;
+        }
+    </style>
+</head>
+<body>
+    <br />
+    <!---->
+    <div class="container-fluid">
+        <!--Banner Bar-->
+        <div class="row">
+            <div class="col-xs"></div>
+            <div class="col-lg bg-primary px-5 py-2">
+                <span class="text-arial text-light display-3">Address Book</span>
+            </div>
+            <div class="col-xs"></div>
+        </div>
+        <!--End Banner Bar-->
+        <!--New Contact Form-->
+        <div id="contactForm" class="row">
+            <div class="col-sm-2"></div>
+            <form id="form1" class="form-group col-sm-8">
+                <div class="row">
+                    <div id="contactFormTitleAddContact" class="col-12 pl-4 mt-5 mb-4 text-primary text-center"><h3>Add New Contact</h3></div>
+                    <div id="contactFormTitleEditContact" class="col-12 pl-4 mt-5 mb-4 text-primary text-center collapse"><h3>Edit Contact</h3></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input id="formFirstName" type="text" class="form-control" placeholder="First Name" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input id="formLastName" type="text" class="form-control" placeholder="Last Name" />
+                    </div>
+                </div>
+                <div class="row"><div class="col-12"><br /></div></div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input id="formAddress1" type="text" class="form-control" placeholder="Address" />
+                    </div>
+                </div>
+                <div class="row"><div class="col-12"><br /></div></div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <input id="formCityName" type="text" class="form-control" placeholder="City" />
+                    </div>
+                    <div class="col-sm-3">
+                        <input id="formStateCode" type="text" class="form-control" placeholder="State" />
+                    </div>
+                    <div class="col-sm-4">
+                        <input id="formZipCode" type="text" class="form-control" placeholder="Zip" />
+                    </div>
+                </div>
+                <div class="row"><div class="col-12"><br /></div></div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input id="formPhoneNumber" type="tel" class="form-control" placeholder="Phone Number" />
+                    </div>
+                </div>
+                <div class="row"><div class="col-12"><br /></div></div>
+                <div id="contactFormButtonsAddContact" class="row">
+                    <div class="col-sm-12">
+                        <input id="buttonAddContact" type="button" class="form-control btn btn-sm btn-primary w-25" value="Add" />
+                    </div>
+                </div>
+                <div id="contactFormButtonsEditContact"  class="row collapse">
+                    <div class="col-sm-6 text-center">
+                        <input id="buttonUpdateContact" type="button" class="form-control btn btn-sm btn-primary w-50" value="Update" />
+                    </div>
+                    <div class="col-sm-6">
+                        <input id="buttonCancelUpdate" type="button" class="form-control btn btn-sm btn-primary w-50" value="Cancel" />
+                    </div>
+                    <div class="col-sm-12">
+                        <input id="contactFormEditFormContactIndex" type="hidden" />
+                    </div>
+                </div>
+            </form>
+            <div class="col-sm-2"></div>
+        </div>
+        <!--End New Contact Form-->
+        <!--Contact Card-->
+        <div id="contactCard" class="row collapse">
+            <div class="col-sm-2"></div>
+            <form id="form1" class="form-group col-sm-8">
+                <div class="row">
+                    <div class="col-12 pl-4 mt-5 mb-4 text-center text-primary"><h3>Contact Card</h3></div>
+                </div>
+                <div class="rounded border-radius form-group container">
+                    <div class="card p-2 contact-card">
+                        <div id="contactCardDiv" class="card-body text-monospace contact-card">
+                            <span id="contactCardDetails">
+                                <!--JavaScript Here-->
+                            </span>
+                            <input type="hidden" id="contactIndexField" />
+                        </div>
+                    </div>
+                    <div class="row my-4 text-center">
+                        
+                        <div class="col-4 my-2">
+                            <input id="contactCardButtonEdit" type="button" class="btn btn-primary" value="Edit" />
+                        </div>
+                        <div class="col-4 my-2">
+                            <input id="contactCardButtonDelete" type="button" class="btn btn-primary" value="Delete" />
+                        </div>
+                        <div class="col-4 my-2">
+                            <input id="contactCardButtonClose" type="button" class="btn btn-primary" value="Close" />
+                        </div>
+                    </div>
+                </div> 
+                <div class="row"><div class="col-12"><br /></div></div>
+                
+            </form>
+            <div class="col-sm-2"></div>
+        </div>
+        <!--End Contact Card-->
+
+        <!--
+            Section below intended to be a nav bar to filter addressbook by letter. Not currently implmeneted
+        -->
+
+        <!--
+        <div class="row">
+            <div class="col-12"><br /></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#">Active</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                  </ul>
+            </div>
+            <div class="col-8"></div>
+        </div>
+        -->
+        <div class="row">
+            <div class="col-12">
+                <br />
+            </div>
+            <div class="col-8"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col">
+                <table id="results" class="table">
+                    <thead>
+                        <tr>
+                            
+                            <th class="results-header-active text-white align-top" id="tableFirstName" onclick='sort("first");'>First Name<span class="hint">&nbsp;&nbsp;&nbsp; Sort</span></th>
+                            <th class="results-header-active text-white align-top" id="tableLastName"onclick='sort("last");'>Last Name<span class="hint">&nbsp;&nbsp;&nbsp; Sort</span></th>
+                            <th class="results-header text-white align-top">Details</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--JavaScript Here-->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+    <!---->
+    
+    
+    <!---->
+    
+    <!---->
+    <script src="index.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
