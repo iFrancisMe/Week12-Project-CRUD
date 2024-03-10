@@ -70,7 +70,7 @@
                 <div class="row"><div class="col-12"><br /></div></div>
                 <div class="row">
                     <div class="col-sm-5">
-                        <input id="formCityName" type="text" class="form-control" placeholder="City" />
+                        <input id="formCity" type="text" class="form-control" placeholder="City" />
                     </div>
                     <div class="col-sm-3">
                         <input id="formStateCode" type="text" class="form-control" placeholder="State" />
@@ -98,9 +98,6 @@
                     <div class="col-sm-6">
                         <input id="buttonCancelUpdate" type="button" class="form-control btn btn-sm btn-primary my-1" value="Cancel" />
                     </div>
-                    <div class="col-sm-12">
-                        <input id="contactFormEditFormContactIndex" type="hidden" />
-                    </div>
                 </div>
             </form>
             <div class="col-sm-2"></div>
@@ -119,7 +116,7 @@
                             <span id="contactCardDetails">
                                 <!--JavaScript Here-->
                             </span>
-                            <input type="hidden" id="contactIndexField" />
+                            <input type="hidden" id="contactIDField" />
                         </div>
                     </div>
                     <div class="row my-4 text-center">
@@ -146,27 +143,24 @@
             Section below intended to be a nav bar to filter addressbook by letter. Not currently implmeneted
         -->
 
-        <!--
+        
         <div class="row">
             <div class="col-12"><br /></div>
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <ul class="nav justify-content-center">
+                <ul id='navbar' class="nav justify-content-center">
                     <li class="nav-item">
-                      <a class="nav-link active" href="#">Active</a>
+                      <a class="nav-link" href="#">All</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
+                      <a class="nav-link" href="#">&nbsp;</a>
                     </li>
                   </ul>
             </div>
             <div class="col-8"></div>
         </div>
-        -->
+       
         <div class="row">
             <div class="col-12">
                 <br />
@@ -180,8 +174,8 @@
                     <thead>
                         <tr>
                             
-                            <th class="results-header-active text-white align-top" id="tableFirstName" onclick='sort("first");'>First Name<span class="hint">&nbsp;&nbsp;&nbsp; Sort</span></th>
-                            <th class="results-header-active text-white align-top" id="tableLastName"onclick='sort("last");'>Last Name<span class="hint">&nbsp;&nbsp;&nbsp; Sort</span></th>
+                            <th class="results-header-active text-white align-top" id="tableFirstName" onclick='AddressBook.sort("FirstName");'>First Name<span class="hint">&nbsp;&nbsp;&nbsp; Sort</span></th>
+                            <th class="results-header-active text-white align-top" id="tableLastName"onclick='AddressBook.sort("LastName");'>Last Name<span class="hint">&nbsp;&nbsp;&nbsp; Sort</span></th>
                             <th class="results-header text-white align-top">Details</th>
                             
                         </tr>
@@ -200,8 +194,42 @@
     <!---->
     
     <!---->
-    <script src="index.js"></script>
+    <script>
+        var testVar1 = ['blah1', 'blah2', 'blah3', 'blah4'];
+        // function testFunc() {
+        //     return 'Hello ' + faker.person.fullName();
+        // }
+    </script>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    
+    <script type="module">
+        import { faker } from 'https://esm.sh/@faker-js/faker';
+
+        // Caitlyn Kerluke
+        const randomName = faker.person.fullName();
+
+        // Rusty@arne.info
+        const randomEmail = faker.internet.email();
+
+        console.log(testVar1[3])
+        var myobj = faker;
+        console.log(myobj.internet.email());
+
+        // console.log(testFunc() + '2')
+        // function testFunc2() {
+        //     return myobj;
+        // }
+
+        export default async function () {
+    
+            faker;
+        };
+    </script>
+<script src="index.js"></script>
+
+    
+
 </body>
 </html>
